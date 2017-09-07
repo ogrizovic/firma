@@ -40,6 +40,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+               <groupId>org.springframework.ws</groupId>
+               <artifactId>spring-ws-core</artifactId>
+        </dependency>
 	</dependencies>
 
 	<build>
@@ -47,6 +52,28 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+			    <groupId>org.jvnet.jaxb2.maven2</groupId>
+			    <artifactId>maven-jaxb2-plugin</artifactId>
+			    <version>0.13.0</version>
+<!-- 			    <executions> -->
+<!-- 			        <execution> -->
+<!-- 			            <goals> -->
+<!-- 			                <goal>generate</goal> -->
+<!-- 			            </goals> -->
+<!-- 			        </execution> -->
+<!-- 			    </executions> -->
+			    <configuration>
+			        <schemaLanguage>WSDL</schemaLanguage>
+			        <generatePackage>xmlws.firma.webservices.test</generatePackage>
+			        <schemas>
+			            <schema>
+			                <url>wsdls/tests.wsdl.xml</url>
+			            </schema>
+			        </schemas>
+			    </configuration>
 			</plugin>
 		</plugins>
 	</build>

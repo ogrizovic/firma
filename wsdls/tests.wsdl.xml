@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.poslovna.com/webservices" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.poslovna.com/webservices" targetNamespace="http://www.poslovna.com/webservices">
+  <wsdl:types xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.poslovna.com/webservices" xmlns:tns="http://www.poslovna.com/webservices">
+
+	<xs:element name="getTestDataRequest" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+		<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+				<xs:element name="indexOfTestData" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getTestDataResponse" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+		<xs:complexType xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:sequence xmlns:xs="http://www.w3.org/2001/XMLSchema">
+				<xs:element name="testData" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getTestDataRequest" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:part element="tns:getTestDataRequest" name="getTestDataRequest" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTestDataResponse" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:part element="tns:getTestDataResponse" name="getTestDataResponse" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="TestPort" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:operation name="getTestData" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <wsdl:input message="tns:getTestDataRequest" name="getTestDataRequest" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    </wsdl:input>
+      <wsdl:output message="tns:getTestDataResponse" name="getTestDataResponse" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TestPortSoap11" type="tns:TestPort" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+    <wsdl:operation name="getTestData" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <soap:operation soapAction="" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+      <wsdl:input name="getTestDataRequest" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+        <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+      </wsdl:input>
+      <wsdl:output name="getTestDataResponse" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+        <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TestPortService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:port binding="tns:TestPortSoap11" name="TestPortSoap11" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <soap:address location="http://localhost:8001/poslovna/ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
