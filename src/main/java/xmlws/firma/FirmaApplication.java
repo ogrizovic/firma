@@ -16,14 +16,14 @@ public class FirmaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FirmaApplication.class, args);
 		
-		ClientCaller cc = new ClientCaller();
+		//ClientCaller cc = new ClientCaller();
 //		
-		TestClient cli = cc.getTestClient();
+		//TestClient cli = cc.getTestClient();
 		
 //		TestClient cli = new TestClient();
 		
-		GetTestDataResponse res = cli.getTestData(3);
-		System.out.println(res.getTestData());
+		//GetTestDataResponse res = cli.getTestData(3);
+		//System.out.println(res.getTestData());
 		
 //		SOAPTestService srvc = new SOAPTestService();
 //		SOAPTestI soap = srvc.getSOAPTestPort();
