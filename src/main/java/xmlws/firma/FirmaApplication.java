@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import xmlws.firma.wsclient.ClientCaller;
 import xmlws.firma.wsclient.TestClient;
-import xmlws.firma.wsgenerated.GetTestDataResponse;
 
 @SpringBootApplication
 public class FirmaApplication {
