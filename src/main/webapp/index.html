@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+	<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<style type="text/css">
+	.preview-nm tbody tr:hover {
+		background-color: grey;
+		cursor: pointer;
+	}
+
+	.preview-drzave tbody tr:hover {
+		background-color: grey;
+		cursor: pointer;
+	}
+
+	table tr.selected{
+		background-color: orange;
+	}
+
+	#filter {
+		
+		margin-bottom: 12px;
+	}
+
+	</style>
+<title>Firma</title>
+</head>
+<body>
+Izaberi fakturu:
+ <br>
+ <select name="select1" id="select1">
+  <option value="faktura1" name="name1" selected>faktura1</option>
+  <option value="faktura2" name="name2">faktura2</option>
+  <option value="faktura3" name="name3">faktura3</option>
+</select> 
+<br>
+<button type="button" name="gotovo1"  id="dugme1">Gotovo</button> 
+<br>
+<br>
+<br>
+
+
+Izaberi uplatu:
+ <br>
+ <select name="select2" id="select2">
+  <option value="uplata1" name="name1" selected>uplata1</option>
+  <option value="uplata2" name="name2">uplata2</option>
+  <option value="uplata3" name="name3">uplata3</option>
+</select> 
+<br>
+<button type="button" name="gotovo2"  id="dugme2">Gotovo</button>
+
+
+</body>
+
+<script type="text/javascript">
+
+$(function() {
+	var izabranoIme;
+    $("#select1").change(function(){
+    	izabranoIme = $('option:selected', this).attr('name');
+    //$('#name').val("test");
+    console.log(izabranoIme);
+ });
+    
+    $("#dugme1").on("click", function(){
+    	//var zaSlanje = JSON.stringify(izabranoIme);
+    	//console.log(zaSlanje);
+    	
+    	$.ajax({  
+    		headers:{
+    			'Content-Type':'text/plain'
+    		},
+    		type: "POST",  
+    		 url: "http://localhost:8002/firma/fakturaCtrl", 
+    		 data: izabranoIme
+    		})
+    		.done(alert("Uspesno izvrseno!"));
+    	
+    });
+    
+});
+</script>
+
+<script type="text/javascript">
+
+$(function() {
+	var izabranoIme;
+    $("#select2").change(function(){
+    	izabranoIme = $('option:selected', this).attr('name');
+    //$('#name').val("test");
+    console.log(izabranoIme);
+ });
+    
+    $("#dugme2").on("click", function(){
+    	//var zaSlanje = JSON.stringify(izabranoIme);
+    	//console.log(zaSlanje);
+    	
+    	$.ajax({  
+    		headers:{
+    			'Content-Type':'text/plain'
+    		},
+    		type: "POST",  
+    		 url: "http://localhost:8002/firma/uplataCtrl", 
+    		 data: izabranoIme
+    		})
+    		.done(alert("Uspesno izvrseno!"));
+    	
+    });
+    
+});
+</script>
+
+</html>
